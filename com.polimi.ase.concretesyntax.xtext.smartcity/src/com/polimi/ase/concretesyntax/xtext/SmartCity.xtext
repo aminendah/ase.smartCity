@@ -1,0 +1,230 @@
+grammar com.polimi.ase.concretesyntax.xtext.SmartCity with org.eclipse.xtext.common.Terminals
+
+generate smartCity "http://www.polimi.com/ase/concretesyntax/xtext/SmartCity"
+
+SmartCity:
+	(providers+=Provider)+
+	(dataSources+=DataSource)*
+;
+
+Provider:
+	NewsSite | Highway | PublicTransport | Province | County | Municipality
+;
+
+NewsSite:
+	"NewsSite " name=ID " {"
+		"sources " sources+=([DataSource]) (","sources+=([DataSource]))*
+	"}"
+;
+
+Highway:
+	"Highway " name=ID " {"
+		"sources " sources+=([DataSource]) (","sources+=([DataSource]))*
+	"}"
+;
+
+PublicTransport:
+	"PublicTransport " name=ID " {"
+		"sources " sources+=([DataSource]) (","sources+=([DataSource]))*
+	"}"
+;
+
+Province:
+	"Province " name=ID " {"
+		"sources " sources+=([DataSource]) (","sources+=([DataSource]))*
+	"}"
+;
+
+County:
+	"County " name=ID " {"
+		"sources " sources+=([DataSource]) (","sources+=([DataSource]))*
+	"}"
+;
+
+Municipality:
+	"Municipality " name=ID " {"
+		"sources " sources+=([DataSource]) (","sources+=([DataSource]))*
+	"}"
+;
+
+DataSource:
+	"DataSource " name=ID " {"
+		(data+=Data)+
+	"}"
+;
+
+Metadata:
+	Location | UpdateFreq | IssuedDate
+;
+
+IssuedDate:
+	"IssuedDate {"
+		"date" date=STRING
+	"}"
+;
+
+Location:
+	"Location {"
+		"latitude" latitude=STRING
+		"longitude" longitude=STRING
+		"region" region=STRING
+	"}"
+;
+
+UpdateFreq:
+	"UpdateFreq {"
+		"time" time=INT
+	"}"
+;
+
+Data:
+	Number | Text | Image | Video | Post | "Data {"
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+Number:
+	SocialNetworkCheckins | CellphoneDensity
+;
+
+SocialNetworkCheckins:
+	"SocialNetworkCheckins {"
+		"amount" amount=INT
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+CellphoneDensity:
+	"CellphoneDensity {"
+		"measure" measure=INT
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+Text:
+	MeteoData | TrafficSensor | TransportSchedule | Alert | Paragraph
+;
+
+Paragraph:
+	"Paragraph " data=STRING
+;
+
+MeteoData:
+	"MeteoData {"
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+TrafficSensor:
+	"TrafficSensor {"
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+TransportSchedule:
+	"TransportSchedule {"
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+Alert:
+	PublicAlert
+;
+
+PublicAlert:
+	"PublicAlert {"
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+Post:
+	Twitter | Facebook | Blog | Instagram
+;
+
+Twitter:
+	"Twitter {"
+		"texts {" 
+			(paragraphs+=Paragraph)*	
+		"}"
+		"images {" 
+			(images+=Image)*	
+		"}"
+		"videos {" 
+			(videos+=WebVideo)*	
+		"}"
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+Blog:
+	"Blog {"
+		"texts {" 
+			(texts+=Paragraph)*	
+		"}"
+		"images {" 
+			(images+=Image)*	
+		"}"
+		"videos {" 
+			(videos+=WebVideo)*	
+		"}"
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+Facebook:
+	"Facebook {"
+		"texts {" 
+			(texts+=Paragraph)*	
+		"}"
+		"images {" 
+			(images+=Image)*	
+		"}"
+		"videos {" 
+			(videos+=WebVideo)*	
+		"}"
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+Instagram:
+	"Instagram {"
+		"texts {" 
+			(texts+=Paragraph)*	
+		"}"
+		"images {" 
+			(images+=Image)*	
+		"}"
+		"videos {" 
+			(videos+=WebVideo)*	
+		"}"
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+Image:
+	"Image url " url=STRING
+;
+
+Video:
+	Camera | WebVideo
+;
+
+WebVideo:
+	"WebVideo url " url=STRING
+;
+
+Camera:
+	SecurityCam | HighwayCam
+;
+
+HighwayCam:
+	"HighwayCam {"
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;
+
+SecurityCam:
+	"SecurityCam {"
+		"metadataInfo {" (metadata+=Metadata)+ "}"
+	"}"
+;

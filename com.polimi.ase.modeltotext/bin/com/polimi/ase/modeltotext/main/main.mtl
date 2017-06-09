@@ -1,0 +1,59 @@
+[comment encoding = UTF-8 /]
+
+[module main('/com.polimi.ase.aseproj/model/SmartCity.ecore')/]
+
+
+
+[template public main(smartCity : SmartCity)]
+
+[comment @main /]
+
+[file ('smartCityReport.txt', false, 'UTF-8')]
+---------------------
+Report Location Based
+---------------------
+[let setLocation : Set(String) = smartCity.providers.sources.dataCollected.metadataInfo->select(m | m.oclIsTypeOf(Location))->collect(l | l.oclAsType(Location).region)->asSet()]
+	[for(location : String | setLocation)]		
+	[location/]	
+		[let models : Set(String) = smartCity.providers.sources.dataCollected -> select(name <> null) -> collect(name) -> asSet()]
+			[for( type : String | models )]	
+				[if(smartCity.providers.sources.dataCollected-> select (d | d.oclIsKindOf(Data) and d.name = type and d.metadataInfo -> select(m | (m.oclIsTypeOf(Location) and m.oclAsType(Location).region = location)) -> notEmpty()) ->size()>0)]
+			[type + ' = ' + smartCity.providers.sources.dataCollected-> select (d | d.oclIsKindOf(Data) and d.name = type and d.metadataInfo -> select(m | (m.oclIsTypeOf(Location) and m.oclAsType(Location).region = location)) -> notEmpty()) ->size()/]
+				[/if]
+			[/for]
+		[/let]
+			----------------------
+			['Total = ' + smartCity.providers.sources.dataCollected-> select (d | d.oclIsKindOf(Data) and d.metadataInfo -> select(m | (m.oclIsTypeOf(Location) and m.oclAsType(Location).region = location)) -> notEmpty()) ->size()/]
+	
+	[/for]				
+[/let]
+
+
+----------------------------------
+Report Provider and Location Based
+----------------------------------
+[for (provider : Provider | smartCity.providers)]
+	[provider.name/]	
+	[let setLocation : Set(String) = provider.sources.dataCollected.metadataInfo->select(m | m.oclIsTypeOf(Location))->collect(l | l.oclAsType(Location).region)->asSet()]
+		[for (dataS : DataSource | provider.sources)]		
+			[for(location : String | setLocation)]
+			[location/]
+			-----------			
+					[let models : Set(String) = smartCity.providers.sources.dataCollected -> select(name <> null) -> collect(name) -> asSet()]
+						[for( type : String | models )]
+							[if (provider.sources.dataCollected-> select (d | d.oclIsKindOf(Data) and d.name = type and d.metadataInfo -> select(m | (m.oclIsTypeOf(Location) and m.oclAsType(Location).region = location)) -> notEmpty()) ->size()>0)]
+			[type + ' = ' + provider.sources.dataCollected-> select (d | d.oclIsKindOf(Data) and d.name = type and d.metadataInfo -> select(m | (m.oclIsTypeOf(Location) and m.oclAsType(Location).region = location)) -> notEmpty()) ->size()/]
+							[/if]
+						[/for]
+					[/let]
+			----------------------
+			['Total = ' + provider.sources.dataCollected-> select (d | d.oclIsKindOf(Data) and d.metadataInfo -> select(m | (m.oclIsTypeOf(Location) and m.oclAsType(Location).region = location)) -> notEmpty()) ->size()/]	
+			
+			[/for]			
+		[/for]
+	[/let]
+
+[/for]
+[/file]
+
+[/template]

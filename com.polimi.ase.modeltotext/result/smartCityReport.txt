@@ -1,0 +1,121 @@
+---------------------
+Report Location Based
+---------------------
+	Bergamo	
+			Twitter = 1
+			TransportSchedule = 1
+			----------------------
+			Total = 2
+	
+	Lecco	
+			Twitter = 2
+			MeteoData = 7
+			----------------------
+			Total = 9
+	
+	Como	
+			Twitter = 3
+			TransportSchedule = 1
+			Facebook = 2
+			Instagram = 2
+			----------------------
+			Total = 8
+	
+	Monza	
+			TransportSchedule = 1
+			Instagram = 2
+			----------------------
+			Total = 5
+	
+	Milan	
+			Twitter = 6
+			PublicAlert = 2
+			TransportSchedule = 1
+			Facebook = 4
+			MeteoData = 4
+			Instagram = 5
+			----------------------
+			Total = 22
+	
+
+
+----------------------------------
+Report Provider and Location Based
+----------------------------------
+	Lombardy Post	
+			Bergamo
+			-----------			
+			Twitter = 1
+			----------------------
+			Total = 1	
+			
+			Lecco
+			-----------			
+			Twitter = 2
+			----------------------
+			Total = 2	
+			
+			Como
+			-----------			
+			Twitter = 3
+			Facebook = 2
+			Instagram = 2
+			----------------------
+			Total = 7	
+			
+			Monza
+			-----------			
+			Instagram = 2
+			----------------------
+			Total = 4	
+			
+			Milan
+			-----------			
+			Twitter = 6
+			Facebook = 4
+			Instagram = 5
+			----------------------
+			Total = 15	
+			
+
+	Trenord	
+			Bergamo
+			-----------			
+			TransportSchedule = 1
+			----------------------
+			Total = 1	
+			
+			Monza
+			-----------			
+			TransportSchedule = 1
+			----------------------
+			Total = 1	
+			
+			Milan
+			-----------			
+			TransportSchedule = 1
+			----------------------
+			Total = 1	
+			
+			Como
+			-----------			
+			TransportSchedule = 1
+			----------------------
+			Total = 1	
+			
+
+	Lombardy	
+			Lecco
+			-----------			
+			MeteoData = 7
+			----------------------
+			Total = 7	
+			
+			Milan
+			-----------			
+			PublicAlert = 2
+			MeteoData = 4
+			----------------------
+			Total = 6	
+			
+

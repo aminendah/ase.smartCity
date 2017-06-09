@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SmartCity" nsURI="http://SmartCity" nsPrefix="SmartCity">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Provider">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sources" lowerBound="1"
+        upperBound="-1" eType="#//DataSource" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Municipality" eSuperTypes="#//Provider"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Country" eSuperTypes="#//Provider"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Province" eSuperTypes="#//Provider"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PublicTransport" eSuperTypes="#//Provider"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Highway" eSuperTypes="#//Provider"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewsSite" eSuperTypes="#//Provider"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataCollected" upperBound="-1"
+        eType="#//Data" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Data">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metadataInfo" upperBound="-1"
+        eType="#//Metadata" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Metadata"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Location" eSuperTypes="#//Metadata">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="latitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="longitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="region" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UpdateFreq" eSuperTypes="#//Metadata"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Number" eSuperTypes="#//Data"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Text" eSuperTypes="#//Data"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Image" eSuperTypes="#//Data"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Video" eSuperTypes="#//Data"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SocialNetworkCheckin" eSuperTypes="#//Number">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CellphoneDensity" eSuperTypes="#//Number">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="measure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MeteoData" eSuperTypes="#//Text"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Alert" eSuperTypes="#//Text"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PublicAlert" eSuperTypes="#//Alert"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TraficSensor" eSuperTypes="#//Text"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TransportSchedule" eSuperTypes="#//Text">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="validProvider"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="validProvider" value="(self.DataSource.Provider.oclIsTypeOf(PublicTransport))"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Post" eSuperTypes="#//Text #//Image #//Video #//Data">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="imageAndVideoLimitations validImages validVideos"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="imageAndVideoLimitations" value="(&#xA;&#x9;&#x9;&#x9;self.oclIsTypeOf(Facebook) or&#xA;&#x9;&#x9;&#x9;self.oclIsTypeOf(Twitter) or &#xA;&#x9;&#x9;&#x9;self.oclIsTypeOf(Instagram) &#xA;&#x9;&#x9;&#x9;and (&#xA;&#x9;&#x9;&#x9;&#x9;self.images -> size() > 0 &#xA;&#x9;&#x9;&#x9;&#x9;or self.videos -> size() > 0&#xA;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;) implies (&#xA;&#x9;&#x9;&#x9;self.images -> size() = 0 and self.videos -> size() = 1&#xA;&#x9;&#x9;) or (self.images -> size() = 1 and self.videos -> size() = 0)"/>
+      <details key="validImages" value="(self.images -> select(i | i.oclIsTypeOf(Image)) -> size()) = (self.images -> size())"/>
+      <details key="validVideos" value="(self.videos -> select(v | v.oclIsTypeOf(WebVideo)) -> size()) = (self.videos -> size())"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="videos" upperBound="-1"
+        eType="#//WebVideo" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="images" upperBound="-1"
+        eType="#//Image" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paragraphs" upperBound="-1"
+        eType="#//Paragraph" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Twitter" eSuperTypes="#//Post"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Blog" eSuperTypes="#//Post"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Facebook" eSuperTypes="#//Post"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Instagram" eSuperTypes="#//Post"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Camera" eSuperTypes="#//Video #//Image"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SecurityCam" eSuperTypes="#//Camera"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HighwayCam" eSuperTypes="#//Camera"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Paragraph" eSuperTypes="#//Text"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WebVideo" eSuperTypes="#//Video"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SmartCity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providers" upperBound="-1"
+        eType="#//Provider" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IssuedDate" eSuperTypes="#//Metadata">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+</ecore:EPackage>

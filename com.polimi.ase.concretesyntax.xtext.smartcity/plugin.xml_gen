@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.polimi.com/ase/concretesyntax/xtext/SmartCity" 
+       class = "com.polimi.ase.concretesyntax.xtext.smartCity.SmartCityPackage"
+       genModel = "model/generated/SmartCity.genmodel" /> 
+	
+  </extension>
+
+
+
+</plugin>

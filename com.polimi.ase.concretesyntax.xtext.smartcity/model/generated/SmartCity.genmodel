@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.polimi.ase.concretesyntax.xtext.smartcity/src-gen"
+    editDirectory="/com.polimi.ase.concretesyntax.xtext.smartcity.edit/src" editorDirectory="/com.polimi.ase.concretesyntax.xtext.smartcity.editor/src"
+    modelPluginID="com.polimi.ase.concretesyntax.xtext.smartcity" forceOverwrite="true"
+    modelName="SmartCity" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="com.polimi.ase.concretesyntax.xtext.smartcity.edit"
+    editorPluginID="com.polimi.ase.concretesyntax.xtext.smartcity.editor" runtimeVersion="2.11">
+  <genPackages prefix="SmartCity" basePackage="com.polimi.ase.concretesyntax.xtext"
+      disposableProviderFactory="true" fileExtensions="scity" ecorePackage="SmartCity.ecore#/">
+    <genClasses ecoreClass="SmartCity.ecore#//SmartCity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SmartCity.ecore#//SmartCity/providers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SmartCity.ecore#//SmartCity/dataSources"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Provider">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//Provider/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SmartCity.ecore#//Provider/sources"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//NewsSite"/>
+    <genClasses ecoreClass="SmartCity.ecore#//Highway"/>
+    <genClasses ecoreClass="SmartCity.ecore#//PublicTransport"/>
+    <genClasses ecoreClass="SmartCity.ecore#//Province"/>
+    <genClasses ecoreClass="SmartCity.ecore#//County"/>
+    <genClasses ecoreClass="SmartCity.ecore#//Municipality"/>
+    <genClasses ecoreClass="SmartCity.ecore#//DataSource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//DataSource/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SmartCity.ecore#//DataSource/data"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Metadata"/>
+    <genClasses ecoreClass="SmartCity.ecore#//IssuedDate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//IssuedDate/date"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Location">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//Location/latitude"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//Location/longitude"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//Location/region"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//UpdateFreq">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//UpdateFreq/time"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Data">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SmartCity.ecore#//Data/metadata"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Number"/>
+    <genClasses ecoreClass="SmartCity.ecore#//SocialNetworkCheckins">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//SocialNetworkCheckins/amount"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//CellphoneDensity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//CellphoneDensity/measure"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Text"/>
+    <genClasses ecoreClass="SmartCity.ecore#//Paragraph">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//Paragraph/data"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//MeteoData"/>
+    <genClasses ecoreClass="SmartCity.ecore#//TrafficSensor"/>
+    <genClasses ecoreClass="SmartCity.ecore#//TransportSchedule"/>
+    <genClasses ecoreClass="SmartCity.ecore#//Alert"/>
+    <genClasses ecoreClass="SmartCity.ecore#//PublicAlert"/>
+    <genClasses ecoreClass="SmartCity.ecore#//Post">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SmartCity.ecore#//Post/images"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SmartCity.ecore#//Post/videos"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Twitter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SmartCity.ecore#//Twitter/paragraphs"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Blog">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SmartCity.ecore#//Blog/texts"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Facebook">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SmartCity.ecore#//Facebook/texts"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Instagram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SmartCity.ecore#//Instagram/texts"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Image">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//Image/url"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Video"/>
+    <genClasses ecoreClass="SmartCity.ecore#//WebVideo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SmartCity.ecore#//WebVideo/url"/>
+    </genClasses>
+    <genClasses ecoreClass="SmartCity.ecore#//Camera"/>
+    <genClasses ecoreClass="SmartCity.ecore#//HighwayCam"/>
+    <genClasses ecoreClass="SmartCity.ecore#//SecurityCam"/>
+  </genPackages>
+</genmodel:GenModel>
